@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f7f5" />
+    <meta name="description" content="Merge as many PDFs as you need, right in your browser. Your files stay on your device." />
+    <title>Fold — PDF tools, made simple</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="compress.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Fold home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>fold<span class="brand-dot">.</span></span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a class="nav-link active" href="#merge" id="merge-nav">Merge PDFs</a>
+        <a class="nav-link" href="#compress" id="compress-nav">Compress</a>
+      </nav>
+      <div class="top-note"><span class="privacy-dot"></span> Private by design</div>
+    </header>
+
+    <main id="merge">
+      <section class="intro">
+        <div class="eyebrow"><span class="eyebrow-line"></span> YOUR FILES. YOUR RULES.</div>
+        <h1>All your PDFs,<br /><span>one neat file.</span></h1>
+        <p class="intro-copy">Merge as many as you need. No account, no upload limits, no files leaving your device.</p>
+        <div class="trust-row">
+          <span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5 16 5v4.4c0 3.7-2.5 6.7-6 8.1-3.5-1.4-6-4.4-6-8.1V5l6-2.5Z"/><path d="m7.5 9.8 1.6 1.6 3.6-3.8"/></svg>100% in your browser</span>
+          <b>·</b><span>No file count limit</span><b>·</b><span>Free, always</span>
+        </div>
+      </section>
+
+      <section class="workbench" aria-label="PDF merger">
+        <div class="workbench-top">
+          <div class="step-title"><span class="step-number">01</span><div><h2 id="work-title">Bring your PDFs together</h2><p id="work-description">Drop in your files, then arrange them in the order you want.</p></div></div>
+          <div class="local-badge"><span class="lock-icon">⌑</span> STAYS ON THIS DEVICE</div>
+        </div>
+        <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choose PDF files or drop them here">
+          <input id="file-input" type="file" accept="application/pdf,.pdf" multiple hidden />
+          <div class="upload-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 32V9m0 0-8 8m8-8 8 8M10 29v9a3 3 0 0 0 3 3h22a3 3 0 0 0 3-3v-9"/></svg></div>
+          <div class="drop-copy"><strong>Drop your PDFs here</strong><span>or <button class="text-button" id="browse-button" type="button">browse files</button> from your device</span></div>
+          <div class="drop-hint">PDF files only <span>·</span> No file count limit</div>
+        </div>
+
+        <div class="compress-settings" id="compress-settings" hidden>
+          <div class="settings-heading"><div><strong>Compression level</strong><span>Choose a balance between smaller size and sharper pages.</span></div><select id="compression-level" aria-label="Compression level"><option value="compact">Smaller file · 110 DPI</option><option value="balanced" selected>Balanced · 144 DPI</option><option value="clear">Clearer pages · 180 DPI</option></select></div>
+          <div class="quality-note"><span>i</span><p>Compression converts each page to an image. Searchable text, links, forms and accessibility data won’t be preserved. Keep your original PDF.</p></div>
+        </div>
+
+        <div class="file-area" id="file-area" hidden>
+          <div class="file-list-heading"><div><strong>Your files</strong><span class="file-count" id="file-count">0</span></div><button class="clear-button" id="clear-button" type="button">Remove all</button></div>
+          <ol class="file-list" id="file-list" aria-label="PDFs in merge order"></ol>
+          <button class="add-more" id="add-more" type="button"><span>＋</span> Add more PDFs</button>
+        </div>
+
+        <div class="workbench-bottom">
+          <div class="size-summary" id="size-summary"><span class="summary-icon">↗</span><span>Add PDFs to get started</span></div>
+          <button class="merge-button" id="merge-button" type="button" disabled><span class="merge-label">Merge PDFs</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg></button>
+        </div>
+        <div class="progress-wrap" id="progress-wrap" hidden><div class="progress-track"><span id="progress-bar"></span></div><div class="progress-copy"><span id="progress-label">Getting your PDFs ready…</span><span id="progress-percent">0%</span></div></div>
+        <div class="result" id="result" role="status" hidden></div>
+      </section>
+
+      <section class="how-it-works">
+        <div class="section-kicker">A LITTLE MORE CONTROL</div>
+        <h2>Your documents, <span>your way.</span></h2>
+        <div class="feature-grid">
+          <article class="feature-card"><div class="feature-icon violet">↕</div><h3>Set your own order</h3><p>Drag files into place. Your merged PDF follows the list, from top to bottom.</p></article>
+          <article class="feature-card"><div class="feature-icon mint">⌂</div><h3>Keep it on your device</h3><p>Your documents are processed locally in your browser. Nothing gets uploaded.</p></article>
+          <article class="feature-card" id="compress"><div class="feature-icon peach">✳</div><h3>Compress image-heavy PDFs</h3><p>Choose a resolution and create a smaller, image-based PDF right in your browser.</p><button class="feature-action" id="try-compress" type="button">Try compression →</button></article>
+        </div>
+      </section>
+    </main>
+    <footer><a class="brand footer-brand" href="#"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>fold<span class="brand-dot">.</span></span></a><span>Simple PDF tools. Made for real life.</span><span class="footer-private"><span class="privacy-dot"></span> Nothing uploaded. Ever.</span></footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js" defer></script>
+    <script src="app.js" defer></script>
+  </body>
+</html>
